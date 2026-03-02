@@ -1,0 +1,39 @@
+{
+    "title": "Actor input schema",
+    "description": "This is actor input schema",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "account": {
+            "title": "Account",
+            "type": "string",
+            "description": "Booker Account Name",
+            "editor": "textfield"
+        },
+        "username": {
+            "title": "Username",
+            "type": "string",
+            "description": "Booker Username",
+            "editor": "textfield"
+        },
+        "password": {
+            "title": "Password",
+            "type": "string",
+            "description": "Booker Password",
+            "editor": "textfield"
+        },
+        "proxy": {
+            "title": "Proxy configuration",
+            "type": "object",
+            "description": "Select proxies to be used by your crawler.",
+            "prefill": {
+                "useApifyProxy": true
+            },
+            "default": {
+                "useApifyProxy": true
+            },
+            "editor": "proxy"
+        }
+    },
+    "required": ["account", "username", "password"]
+}

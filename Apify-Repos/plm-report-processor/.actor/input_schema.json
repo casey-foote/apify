@@ -1,0 +1,53 @@
+{
+    "title": "PLM Report Processors",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "username": {
+            "title": "Username",
+            "type": "string",
+            "description": "Username for login",
+            "editor": "textfield",
+            "default": ""
+        },
+        "password": {
+            "title": "Password",
+            "type": "string",
+            "description": "Password for login",
+            "editor": "textfield",
+            "default": ""
+        },
+        "report": {
+            "title": "Report",
+            "type": "string",
+            "description": "Type of Report that needs to be downloaded",
+            "editor": "select",
+            "enum": [
+                "payments",
+                "approved-loans",
+                "active-loans",
+                "leads",
+                "due-loans",
+                "aging"
+            ],
+            "enumTitles": [
+                "payments",
+                "approved-loans",
+                "active-loans",
+                "leads",
+                "due-loans",
+                "aging"
+            ]
+        },
+        "days": {
+            "title": "Historical Days",
+            "type": "integer",
+            "description": "Specify the desired timeframe(days) for scraping the Report.",
+            "default": 1,
+            "editor": "number",
+            "prefill": 1,
+            "minimum": 1
+        }
+    },
+    "required": ["report", "password", "username"]
+}

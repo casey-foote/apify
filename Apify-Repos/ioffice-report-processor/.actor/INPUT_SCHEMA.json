@@ -1,0 +1,79 @@
+{
+    "title": "CheerioCrawler Template",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "username": {
+            "title": "Username",
+            "type": "string",
+            "description": "Username for ioffice",
+            "editor": "textfield"
+        },
+        "password": {
+            "title": "Password",
+            "type": "string",
+            "description": "Password for ioffice",
+            "editor": "textfield"
+        },
+        "report": {
+            "title": "Report to process",
+            "type": "string",
+            "description": "Which report do you want to process?",
+            "default": "TEKBigMetric",
+            "enum": [
+                "TEKBigMetric",
+                "TEK2020ALLDATA",
+                "ProductSalesDetail"
+            ],
+            "enumTitles": [
+                "TEKBigMetric",
+                "TEK2020ALLDATA",
+                "Product Sales Detail"
+            ],
+            "editor": "select"
+        },
+        "date": {
+            "title": "Date (YYYY-MM-DD)",
+            "type": "string",
+            "description": "By default it will run for current date. If this date provided, it will run for given date",
+            "editor": "textfield"
+        },
+        "days": {
+            "title": "Number of past days",
+            "type": "integer",
+            "description": "It will run for given number of days in past starting from date provided above.",
+            "prefill": 21,
+            "default": 21,
+            "minimum": 0,
+            "maximum": 2000
+        },
+        "threads": {
+            "title": "Number of parallel threads",
+            "type": "integer",
+            "description": "Running more threads requires more memory.",
+            "prefill": 1,
+            "default": 1,
+            "minimum": 1,
+            "maximum": 10
+        },
+        "proxy": {
+            "title": "Proxy configuration",
+            "type": "object",
+            "description": "Select proxies to be used by your crawler.",
+            "prefill": {
+                "useApifyProxy": true
+            },
+            "default": {
+                "useApifyProxy": true
+            },
+            "editor": "proxy"
+        }
+    },
+    "required": [
+        "username",
+        "password",
+        "report",
+        "days",
+        "threads"
+    ]
+}

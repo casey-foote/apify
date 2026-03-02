@@ -1,0 +1,10 @@
+{
+    "extends": "@apify",
+    "root": true,
+    "rules": {
+        "linebreak-style": 0
+    },
+    "globals": {
+        "$": true
+    }
+}

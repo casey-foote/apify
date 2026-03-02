@@ -1,0 +1,37 @@
+{
+    "title": "Zenoite Tableau Report Generator",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "username": {
+            "title": "Username",
+            "type": "string",
+            "description": "Username for login",
+            "editor": "textfield"
+        },
+        "password": {
+            "title": "Password",
+            "type": "string",
+            "description": "Password for login",
+            "editor": "textfield"
+        },
+        "reportFileUrl": {
+            "title": "File Url",
+            "type": "string",
+            "description": "URL of file that needs to be downloaded",
+            "editor": "textfield"
+        },
+        "proxy": {
+            "title": "Proxy configuration",
+            "type": "object",
+            "editor": "proxy",
+            "description": "The best option is usually Automatic proxy. But you can also use your own proxies or no proxy",
+            "prefill": {
+                "useApifyProxy": false,
+                "apifyProxyGroups": []
+            },
+            "sectionCaption": "Proxy configuration"
+        }
+    },
+    "required": ["reportFileUrl"]
+}
