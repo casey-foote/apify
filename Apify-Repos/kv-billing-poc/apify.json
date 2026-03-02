@@ -1,0 +1,9 @@
+{
+	"name": "kv-billing-poc",
+	"version": "0.0",
+	"buildTag": "latest",
+	"env": {
+		"APIFY_TOKEN" : "PUT_REMOTE_APIFY_ACCOUNT_TOKEN_HERE"
+	},
+	"template": "project_empty"
+}

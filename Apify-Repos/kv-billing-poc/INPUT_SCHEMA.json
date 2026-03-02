@@ -1,0 +1,39 @@
+{
+    "title": "Input schema for the apify_project actor.",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "remote": {
+            "title": "Remote Key Value store",
+            "type": "string",
+            "description": "Remote Key Value store",
+            "editor": "textfield"
+        },
+        "threads": {
+            "title": "Threads",
+            "type": "integer",
+            "description": "How many threads to use",
+            "default": 2,
+            "minimum": 1,
+            "maximum": 10
+        },
+        "action": {
+            "title": "Action",
+            "type": "string",
+            "description": "Action to perform",
+            "default": "download",
+            "enum": [
+                "download",
+                "upload"
+            ],
+            "enumTitles": [
+                "Download remote to local",
+                "Upload local to remote"
+            ],
+            "editor": "select"
+        }
+    },
+    "required": [
+        "remote"
+    ]
+}
