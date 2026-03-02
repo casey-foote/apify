@@ -5,7 +5,7 @@ const fs = require("fs");
 const chokidar = require("chokidar");
 const { waitForFile, handleFileChange } = require("./functions");
 
-module.exports = async (page, input, dataset, exportSelector) => {
+module.exports = async (page, input, dataset, exportSelector, extraColumns = {}) => {
     const csvDirectory = path.join(process.cwd(), "downloads");
     if (!fs.existsSync(csvDirectory)) {
         fs.mkdirSync(csvDirectory);
@@ -42,9 +42,11 @@ module.exports = async (page, input, dataset, exportSelector) => {
     ]);
 
     try {
-        await handleFileChange(filePath, dataset, input);
+        await handleFileChange(filePath, dataset, input, extraColumns);
         console.log("Completed");
     } catch (error) {
         console.error(error);
+    } finally {
+        await watcher.close();
     }
 };

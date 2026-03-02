@@ -22,20 +22,30 @@ const waitForFile = async function waitForFile(filename) {
 const handleFileChange = async function handleFileChange(
     filePath,
     dataset,
-    input
+    input,
+    extraColumns = {}
 ) {
     console.log("File downloaded: ", filePath.replace("downloads\\", ""));
-    const json = await csvToJson().fromFile(filePath);
+    let json = await csvToJson().fromFile(filePath);
+    if (Object.keys(extraColumns).length > 0) {
+        json = json.map((record) => ({
+            ...record,
+            ...extraColumns,
+        }));
+    }
+
     console.log(`${json.length} records in ${input.report} Report`);
-    if (input.report == 'approved-loans') {
+    if (input.report == "approved-loans") {
         const store = await Actor.openKeyValueStore(`plm-reports`);
-        await store.setValue(`${input.report}.json`, json);
+        const key = `${input.report}.json`;
+        const existing = input.resetApprovedLoansStore
+            ? []
+            : (await store.getValue(key)) || [];
+        await store.setValue(key, existing.concat(json));
     }
-    else {
-        //await waitForFile(filePath);
-        console.log("Converting data from CSV to Apify Dataset");
-        await dataset.pushData(json);
-    }
+
+    console.log("Converting data from CSV to Apify Dataset");
+    await dataset.pushData(json);
     return Promise.resolve();
 };
 
